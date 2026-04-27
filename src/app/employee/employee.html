@@ -1,0 +1,37 @@
+
+<div class="main">
+    <div class="side">
+
+        <a>Dashboard</a>
+        <a>Employee</a>
+        <a>Profile</a>
+       <div class="bottom-div">
+        profile photo
+       </div>
+
+
+    </div>
+
+    <div class="content">
+        <h1>Employee</h1>
+        <input type="search" placeholder="Search" [(ngModel)]="searchTerm" >
+            <select name="filters" [(ngModel)]="sortOrder" (ngModelChange)="onSortChange($event)">
+                <option>Filter</option>
+                <option value="ascending" (click)="sortAtoZ()">A to Z</option>
+                <option value="descending" (click)="sortZtoA()">Z to A</option>
+            </select>
+        <div>
+
+            @for(emp of Employees| filter:searchTerm() ;track $index)
+            {
+
+                <h1>{{emp.id}}-{{emp.name}}</h1>
+            }
+
+
+        </div>
+    </div>
+
+
+
+</div>
