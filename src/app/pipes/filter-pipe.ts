@@ -11,6 +11,10 @@ export class FilterPipe implements PipeTransform {
     {
       return value;
     }
+    if(searchTerm==' ')
+    {
+      return value;
+    }
 
     const txt=searchTerm.toLowerCase();
 return value.filter((data)=>{

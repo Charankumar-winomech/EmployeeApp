@@ -11,7 +11,7 @@ aspect-ratio: 9 / 16;
 
 .side{
 background-color: rgba(7, 4, 21); 
-color: rgba(164, 162, 176);
+color: rgb(244, 244, 245);
 width : 12%;
 display: flex;
 flex-direction: column;
@@ -24,6 +24,18 @@ height: 100%;
 
 }
 
+::ng-deep .mat-expansion-indicator svg {
+  fill: white !important;
+}
+
+
+mat-expansion-panel{
+     /* background-color: rgb(112, 110, 120); */
+   
+     margin-bottom: 10px;
+    color: white;
+
+}
 mat-expansion-panel-header{
     padding-left: 0;
 }
@@ -31,6 +43,8 @@ mat-panel-title{
     padding-left: 32px;
     padding-top: 2px;
 }
+
+
 #dash-icon{
    position: absolute;
     margin: 0px 0px 10px 4px;
@@ -40,7 +54,8 @@ mat-panel-title{
     font-size: 19px;
     margin-left: 4px;
     width:95%;
-  background-color: rgb(235, 235, 239); 
+  /* background-color: rgb(234, 234, 236);  */
+ 
     color:  rgba(7, 4, 21);
     border-radius:8px ;
 }
