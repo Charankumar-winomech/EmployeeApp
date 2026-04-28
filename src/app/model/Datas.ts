@@ -1,8 +1,8 @@
 export type Datas = {
-    id:number,
+    empCode:string,
     name:string,
-    age:number,
     department:string,
-
+    assignedRoles:string[],
+    joiningDate:string
 
 }

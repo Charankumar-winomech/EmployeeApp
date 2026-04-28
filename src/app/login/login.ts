@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Employee } from '../employee/employee';
 import { FormsModule } from '@angular/forms';
@@ -6,15 +6,18 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink,Employee,FormsModule,RouterOutlet],
+  imports: [RouterLink,FormsModule,Employee],
   standalone:true,
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login  {
 
   userName:string='';
   passWord:string='';
+
+  
+
 
 
   constructor(private router:Router)
@@ -22,16 +25,23 @@ export class Login {
 
   }
   
+ 
+
+
+
   check()
   {
-      if(this.userName==="Admin" && this.passWord==="123")
+      if(this.userName==="Admin" && this.passWord==="123" || this.userName==="charan" && this.passWord==="123")
       {
-        console.log('granted')
-        this.router.navigate(['/employee']);
+      
+        this.router.navigate(['/employee'],{
+          state:{Name:this.userName}
+        });
+  
       }
       else{
         console.log('denied');
-        // alert('denied permission')
+         alert('Access denied');
       }
 
   }

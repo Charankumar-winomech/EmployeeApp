@@ -1,37 +1,101 @@
 
 <div class="main">
     <div class="side">
+        <div class="top-div">
+       
+      <mat-expansion-panel >
+        <mat-expansion-panel-header > 
+            <mat-icon id="dash-icon">
+                <span class="material-symbols-outlined">
+dashboard_2
+</span>
+            </mat-icon>
+            <mat-panel-title>Dashboard</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Attendance</p>
+        <p>Payroll</p>
+    </mat-expansion-panel>
 
-        <a>Dashboard</a>
-        <a>Employee</a>
-        <a>Profile</a>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header> 
+             <mat-icon id="dash-icon">
+               <span class="material-symbols-outlined">
+account_tree
+</span>
+            </mat-icon>
+            <mat-panel-title>Organization</mat-panel-title>
+        </mat-expansion-panel-header>
+       <p>Roles</p>
+       <p>
+        Employee
+       </p>
+      </mat-expansion-panel>
+
+
+    </div>
        <div class="bottom-div">
-        profile photo
+
+        <hr id="line">
+        <div class="last">
+            <img src="profile.jpg" id="bottom-image">
+            <p>
+                {{userName}}
+            </p>
+            <mat-icon id="last-btn" (click)="signOut()">
+                <span class="material-symbols-outlined">
+logout
+</span>
+            </mat-icon>
+            
+
+        </div>
+       
        </div>
 
 
     </div>
 
     <div class="content">
-        <h1>Employee</h1>
-        <input type="search" placeholder="Search" [(ngModel)]="searchTerm" >
+        <div class="top-content">
+        <div>
+        <h1 id="head-details">Employees ({{Employees.length}})</h1>
+   
+        <h3 id="details">All the employees of the company are listed here</h3>
+        </div>
+        <div class="top-button">
+        <button id="import">Import Employees</button>
+        <button id="add"> + Add Employee</button>
+        </div>
+        </div>
+        <mat-icon id="mat-icons">
+           
+search
+        </mat-icon>
+        <input type="search" placeholder="Search" [(ngModel)]="searchTerm" id="target-search" >
+        
             <select name="filters" [(ngModel)]="sortOrder" (ngModelChange)="onSortChange($event)">
-                <option>Filter</option>
+                <option value="">Filter</option>
                 <option value="ascending" (click)="sortAtoZ()">A to Z</option>
                 <option value="descending" (click)="sortZtoA()">Z to A</option>
-            </select>
-        <div>
+            </select>      
+
+        
+
+        <div class="card-temp">
 
             @for(emp of Employees| filter:searchTerm() ;track $index)
             {
+                <app-card [empCode]="emp.empCode" [name]="emp.name" [department]="emp.department"  [assignedRoles]="emp.assignedRoles"  [joiningDate]="emp.joiningDate"></app-card>
 
-                <h1>{{emp.id}}-{{emp.name}}</h1>
             }
+            
 
-
+                
         </div>
+        
+
+        
     </div>
-
-
 
 </div>
