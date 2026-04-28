@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Employee } from '../employee/employee';
 import { Datas } from '../model/Datas';
 
 @Pipe({
@@ -7,15 +6,11 @@ import { Datas } from '../model/Datas';
 })
 export class FilterPipe implements PipeTransform {
   transform(value: Datas[], searchTerm: string): Datas[] {
-    if(!searchTerm)
+    if(!searchTerm || searchTerm.trim().length==0)
     {
       return value;
     }
-    if(searchTerm==' ')
-    {
-      return value;
-    }
-
+  
     const txt=searchTerm.toLowerCase();
 return value.filter((data)=>{
   return data.name.toLowerCase().includes(txt);

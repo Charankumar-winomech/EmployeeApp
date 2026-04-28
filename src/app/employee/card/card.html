@@ -14,8 +14,9 @@
     </div>
 
     <div id="roles">
-        <p id="roles-name">{{assignedRoles[0]}}</p>
-        <p id="roles-name">{{assignedRoles[1]}}</p>
+        @for(assign of assignedRoles;track $index){
+        <div id="roles-name">{{assign}}</div>}
+        <!-- <p id="roles-name">{{assignedRoles[1]}}</p> -->
     </div>
 
     <div class="content">

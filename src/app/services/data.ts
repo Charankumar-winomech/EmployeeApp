@@ -6,43 +6,19 @@ import { Datas } from '../model/Datas';
 export class Data {
 
 
-
-//   EmployeeDatas:Array<Datas> =[
-//   { "id": 1, "name": "Arun Kumar", "age": 25, "department": "Engineering" },
-//   { "id": 2, "name": "Priya Sharma", "age": 28, "department": "HR" },
-//   { "id": 3, "name": "Rahul Verma", "age": 32, "department": "Finance" },
-//   { "id": 4, "name": "Sneha Iyer", "age": 26, "department": "Marketing" },
-//   { "id": 5, "name": "Vikram Singh", "age": 35, "department": "Engineering" },
-//   { "id": 6, "name": "Anjali Mehta", "age": 29, "department": "Sales" },
-//   { "id": 7, "name": "Karthik Reddy", "age": 31, "department": "Engineering" },
-//   { "id": 8, "name": "Neha Gupta", "age": 27, "department": "HR" },
-//   { "id": 9, "name": "Rohit Das", "age": 34, "department": "Finance" },
-//   { "id": 10, "name": "Divya Nair", "age": 30, "department": "Marketing" },
-//   { "id": 11, "name": "Suresh Babu", "age": 36, "department": "Operations" },
-//   { "id": 12, "name": "Pooja Kulkarni", "age": 24, "department": "Sales" },
-//   { "id": 13, "name": "Manoj Patel", "age": 33, "department": "Engineering" },
-//   { "id": 14, "name": "Aisha Khan", "age": 28, "department": "HR" },
-//   { "id": 15, "name": "Naveen Joshi", "age": 37, "department": "Finance" },
-//   { "id": 16, "name": "Meera Pillai", "age": 26, "department": "Marketing" },
-//   { "id": 17, "name": "Deepak Yadav", "age": 31, "department": "Operations" },
-//   { "id": 18, "name": "Kavya Menon", "age": 29, "department": "Sales" },
-//   { "id": 19, "name": "Harish Chandra", "age": 38, "department": "Engineering" },
-//   { "id": 20, "name": "Lakshmi Narayanan", "age": 27, "department": "HR" }
-// ]
-
 EmployeeDatas:Array<Datas> =[
   {
     "empCode": "EMP001",
     "name": "Arun Kumar",
     "department": "Engineering",
-    "assignedRoles": ["Software Engineer", "UI Designer"],
+    "assignedRoles": ["Software Engineer", "UI Designer","Hr"],
     "joiningDate": "2021-06-15"
   },
   {
     "empCode": "EMP002",
     "name": "Priya Sharma",
     "department": "HR",
-    "assignedRoles": ["HR Manager", "Recruitment Specialist"],
+    "assignedRoles": ["HR Manager", "Recruitment Specialist","developer"],
     "joiningDate": "2020-03-10"
   },
   {
