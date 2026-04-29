@@ -196,3 +196,10 @@ margin-top:23px ;
      font-weight: 700;
      cursor: pointer;
 }
+
+
+#api-btn{
+    height: 30px;
+    width: 10%;
+    background-color: aqua;
+}

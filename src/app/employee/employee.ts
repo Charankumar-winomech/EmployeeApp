@@ -4,7 +4,6 @@ import { Datas } from '../model/Datas';
 import { FilterPipe } from '../pipes/filter-pipe';
 import { FormsModule } from '@angular/forms';
 import { Card } from './card/card';
-import { Login } from '../login/login';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';

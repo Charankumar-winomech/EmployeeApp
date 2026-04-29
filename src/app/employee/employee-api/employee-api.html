@@ -1,0 +1,38 @@
+<div class="main-data">
+  <header>
+    <h1>Employees</h1>
+
+    <div>
+      <button (click)="toggleForm()" id="add-btn">Add Employee </button>
+
+      <div>
+        @if(showForm){
+        <form class="form-content" >
+          <input type="text" id="name" name="name"  placeholder="enter a name" [(ngModel)]="username" />
+          <input type="text" id="name" name="name" placeholder="id" [(ngModel)]="id" />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="enter a salary"
+            [(ngModel)]="salary"
+          />
+          <input type="text" id="name" name="name" placeholder="enter a age" [(ngModel)]="age" />
+          <button type="submit" id="btn" (click)="createEmployee()" >Submit</button>
+        </form>
+    }
+      </div>
+    </div>
+  </header>
+
+  <div>
+    @for (emp of employeeList(); track $index) {
+      <app-api-card
+        [name]="emp.employee_name"
+        [id]="emp.id"
+        [salary]="emp.employee_salary"
+        [age]="emp.employee_age"
+      />
+    }
+  </div>
+</div>
