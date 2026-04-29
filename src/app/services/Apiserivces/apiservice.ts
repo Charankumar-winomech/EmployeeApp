@@ -17,7 +17,7 @@ export class Apiservice {
     return this.http.get<T>(`${this.baseUrl}${url}`);
   }
 
-  postRequest<T>(url:string,body:any)
+  postRequest(url:string,body:any)
   {
     return this.http.post(`${this.baseUrl}${url}`,body)
   }

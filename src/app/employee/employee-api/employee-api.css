@@ -1,28 +1,25 @@
-.main-data{
-    padding-left: 25px;
+.main-data {
+  padding-left: 25px;
 }
-#add-btn{
-    background-color: blueviolet;
-    color: white;
-    height: 40px;
+#add-btn {
+  background-color: blueviolet;
+  color: white;
+  height: 40px;
 }
-.form-content{
-    display: flex;
-    flex-direction: column;
-    width:300px;
-
-}
-
-input{
-    height: 30px;
-    margin: 10px 10px 10px 0px;    
-     border-radius: 5px;
+.form-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
-#btn
-{
-    height: 25px;
-    width: 100px;
-    border-radius: 5px;
+input {
+  height: 30px;
+  margin: 10px 10px 10px 0px;
+  border-radius: 5px;
 }
 
+#btn {
+  height: 25px;
+  width: 100px;
+  border-radius: 5px;
+}
