@@ -1,0 +1,69 @@
+<div class="main-data">
+  @if (errorMessage) {
+    <div class="error">
+      {{ errorMessage }}
+    </div>
+  } @else {
+    <div>
+      <h1>Employees({{ employeeList().length }})</h1>
+      <h3 id="details">All the employees of the company are listed here</h3>
+      <div class="search-div">
+        <div>
+          <mat-icon id="mat-icons"> search </mat-icon>
+
+          <input type="search" placeholder="Search" id="target-search" [(ngModel)]="searchTerm" />
+
+          <select name="filters" [(ngModel)]="sortOrder" (ngModelChange)="onSortChange($event)">
+            <option value="">Filter</option>
+            <option value="ascending" (click)="sortAtoZ()">A to Z</option>
+            <option value="descending" (click)="sortZtoA()">Z to A</option>
+          </select>
+        </div>
+        <div>
+          <button (click)="toggleForm()" id="add-btn">Add Employee</button>
+
+          <div class="form-div">
+            @if (showForm) {
+              <form class="form-content">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter a name"
+                  [(ngModel)]="username"
+                />
+
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter a salary"
+                  [(ngModel)]="salary"
+                />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter a age"
+                  [(ngModel)]="age"
+                />
+                <button type="submit" id="btn" (click)="createEmployee()">Submit</button>
+              </form>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="card-div">
+        @for (emp of employeeList() | filter: searchTerm(); track $index) {
+          <app-api-card
+            [name]="emp.employee_name"
+            [id]="emp.id!"
+            [salary]="emp.employee_salary"
+            [age]="emp.employee_age"
+          />
+        }
+      </div>
+    </div>
+  }
+</div>

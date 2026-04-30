@@ -3,8 +3,6 @@ import { Employee } from './employee/employee';
 import { Login } from './login/login';
 
 export const routes: Routes = [
-
-
 {
     path:'',
     pathMatch:'full',
@@ -14,6 +12,4 @@ export const routes: Routes = [
     path:'employee',
     component:Employee
 }
-
-
 ];
