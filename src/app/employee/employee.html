@@ -1,103 +1,43 @@
-
 <div class="main">
-    <div class="side">
-        <div class="top-div">
-       
-      <mat-expansion-panel >
-        <mat-expansion-panel-header > 
-            <mat-icon id="dash-icon">
-                <span class="material-symbols-outlined">
-dashboard_2
-</span>
-            </mat-icon>
-            <mat-panel-title>Dashboard</mat-panel-title>
+  <div class="side">
+    <div class="top-div">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon id="dash-icon">
+            <span class="material-symbols-outlined"> dashboard_2 </span>
+          </mat-icon>
+          <mat-panel-title>Dashboard</mat-panel-title>
         </mat-expansion-panel-header>
         <p>Attendance</p>
         <p>Payroll</p>
-    </mat-expansion-panel>
-
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header> 
-             <mat-icon id="dash-icon">
-               <span class="material-symbols-outlined">
-account_tree
-</span>
-            </mat-icon>
-            <mat-panel-title>Organization</mat-panel-title>
-        </mat-expansion-panel-header>
-       <p>Roles</p>
-       <p>
-        Employee
-       </p>
       </mat-expansion-panel>
 
-
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon id="dash-icon">
+            <span class="material-symbols-outlined"> account_tree </span>
+          </mat-icon>
+          <mat-panel-title>Organization</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Roles</p>
+        <p>Employee</p>
+      </mat-expansion-panel>
     </div>
-       <div class="bottom-div">
-
-        <hr id="line">
-        <div class="last">
-            <img src="profile.jpg" id="bottom-image">
-            <p>
-                {{userName}}
-            </p>
-            <mat-icon id="last-btn" (click)="signOut()">
-                <span class="material-symbols-outlined">
-logout
-</span>
-            </mat-icon>
-            
-
-        </div>
-       
-       </div>
-
-
-    </div>
-
-    <div class="content">
-        <div class="top-content">
-        <div>
-        <h1 id="head-details">Employees ({{Employees.length}})</h1>
-   
-        <h3 id="details">All the employees of the company are listed here</h3>
-        </div>
-        <div class="top-button">
-        <button id="import">Import Employees</button>
-        <button id="add"> + Add Employee</button>
-        </div>
-        </div>
-        <mat-icon id="mat-icons">
-           
-search
+    <div class="bottom-div">
+      <hr id="line" />
+      <div class="last">
+        <img src="profile.jpg" id="bottom-image" />
+        <p>
+          {{ userName }}
+        </p>
+        <mat-icon id="last-btn" (click)="signOut()">
+          <span class="material-symbols-outlined"> logout </span>
         </mat-icon>
-        <input type="search" placeholder="Search" [(ngModel)]="searchTerm" id="target-search" >
-        
-            <select name="filters" [(ngModel)]="sortOrder" (ngModelChange)="onSortChange($event)">
-                <option value="">Filter</option>
-                <option value="ascending" (click)="sortAtoZ()">A to Z</option>
-                <option value="descending" (click)="sortZtoA()">Z to A</option>
-            </select>      
-
-        
-
-        <div class="card-temp">
-
-            @for(emp of Employees| filter:searchTerm() ;track $index)
-            {
-                <app-card [empCode]="emp.empCode" [name]="emp.name" [department]="emp.department"  [assignedRoles]="emp.assignedRoles"  [joiningDate]="emp.joiningDate"></app-card>
-
-            }
-            
-
-                
-        </div>
-        
-       
-         <div>
-            <button id="api-btn" routerLink="/employeeApi">Go to Api</button>
-        </div>
+      </div>
     </div>
+  </div>
 
+  <div class="content">
+    <app-employeelist />
+  </div>
 </div>

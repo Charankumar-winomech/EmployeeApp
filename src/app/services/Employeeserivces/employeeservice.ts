@@ -5,21 +5,12 @@ import { Employee } from '../../model/Employee';
   providedIn: 'root',
 })
 export class Employeeservice {
-    
-  private api=inject(Apiservice);
-
-
-  getEmployees(url:string)
-  {
-    return this.api.getRequest<Employee[]>(url);
+  private api = inject(Apiservice);
+  getEmployees() {
+    return this.api.getRequest<Employee[]>(`employees`);
   }
-
-  addEmployees(employee:Employee,url:string,)
-  {
-    return this.api.postRequest(url,employee);
+  addEmployees(employee: Employee) {
+    console.log(employee);
+    return this.api.postRequest('create', employee);
   }
-
-
-
-
 }
