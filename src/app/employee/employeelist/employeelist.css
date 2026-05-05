@@ -50,7 +50,8 @@ select:focus {
   border: 1px solid rgb(213, 210, 210);
   font-weight: 700;
   cursor: pointer;
-  margin-right: 80px;
+  margin: 10px;
+  /* margin-right: 80px; */
 }
 .form-content {
   display: flex;
@@ -70,11 +71,15 @@ select:focus {
 }
 .search-div {
   display: flex;
+  width: 100%;
   justify-content: space-between;
 }
 .card-div {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px 65px;
+  width: 100%;
+  align-items: stretch;
 }
 .form-div {
   display: flex;
@@ -83,4 +88,9 @@ select:focus {
 .error {
   color: red;
   font-size: larger;
+}
+
+dialog {
+  border: 2px solid black;
+  height: 40px;
 }

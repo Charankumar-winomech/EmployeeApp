@@ -21,37 +21,30 @@
         </div>
         <div>
           <button (click)="toggleForm()" id="add-btn">Add Employee</button>
-
-          <div class="form-div">
-            @if (showForm) {
-              <form class="form-content">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter a name"
-                  [(ngModel)]="username"
-                />
-
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter a salary"
-                  [(ngModel)]="salary"
-                />
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Enter a age"
-                  [(ngModel)]="age"
-                />
-                <button type="submit" id="btn" (click)="createEmployee()">Submit</button>
-              </form>
-            }
-          </div>
         </div>
+      </div>
+      <div class="form-div">
+        @if (showForm) {
+          <form class="form-content">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter a name"
+              [(ngModel)]="username"
+            />
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter a salary"
+              [(ngModel)]="salary"
+            />
+            <input type="text" id="name" name="name" placeholder="Enter a age" [(ngModel)]="age" />
+            <button type="submit" id="btn" (click)="createEmployee()">Submit</button>
+          </form>
+        }
       </div>
 
       <div class="card-div">
