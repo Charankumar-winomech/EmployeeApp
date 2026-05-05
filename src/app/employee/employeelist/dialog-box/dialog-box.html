@@ -1,0 +1,27 @@
+
+<div class="form-div">
+    <div class="top">
+<h2 mat-dialog-title>Create User</h2>
+
+<button mat-button mat-dialog-close ><mat-icon><span class="material-symbols-outlined">
+close
+</span></mat-icon></button>
+
+</div>
+<div class="form-content">
+    <mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" id="input" #username placeholder="Enter a name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input  matInput type="number" id="input" #salary placeholder="Enter a salary"
+  /></mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput  type="number" id="input" #age placeholder="Enter a age"
+  /></mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+<button type="submit" id="btn" [mat-dialog-close]="{ name: username.value, salary: salary.value, age: age.value }">Submit</button>
+</mat-dialog-actions>
+</div>
+</div>

@@ -51,7 +51,7 @@ select:focus {
   font-weight: 700;
   cursor: pointer;
   margin: 10px;
-  /* margin-right: 80px; */
+  margin-right: 0px;
 }
 .form-content {
   display: flex;
@@ -86,11 +86,45 @@ select:focus {
   justify-content: center;
 }
 .error {
-  color: red;
+  color: rgb(255, 255, 255);
   font-size: larger;
+  border-radius: 5px;
+  background: rgb(240, 103, 103);
+  width: auto;
+  padding: 10px;
+  height: 10%;
+  display: inline-flex;
+  gap: 10px;
+
 }
 
-dialog {
-  border: 2px solid black;
-  height: 40px;
+
+#error-msg{
+ text-align: center;
+ font-size: 24px;
+}
+.top{
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes slideLeft {
+from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+ 
+}
+.fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-20%); }
+}
+.error-enter {
+  animation: slideLeft 3s ease-out;
+}
+
+.error-leave {
+  animation: fadeOut 0.5s ease-out forwards;
 }

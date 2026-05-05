@@ -6,12 +6,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { FilterPipe } from '../../pipes/filter-pipe';
-
-
+import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { DialogBox } from './dialog-box/dialog-box';
+import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-employeelist',
   standalone: true,
-  imports: [ApiCard, CommonModule, FormsModule, MatIconModule, FilterPipe],
+  imports: [ApiCard, CommonModule, FormsModule, MatIconModule, FilterPipe, MatInputModule],
   templateUrl: './employeelist.html',
   styleUrl: './employeelist.css',
 })
@@ -25,19 +27,23 @@ export class Employeelist {
   }
 
   errorMessage: string = '';
-
+  showError: boolean = false;
   getEmployees() {
     this.empService.getEmployees().subscribe({
       next: (res: any) => {
         this.employeeList.set(res.data);
       },
       error: (err) => {
-        console.log('API ERROR:', err);
+        console.log('GET API ERROR:', err);
 
         const status = err?.status;
         const message = err?.error?.message || err?.message || 'Unknown error';
 
         this.errorMessage = `Error ${status}: ${message}`;
+        this.showError = true;
+        setTimeout(() => {
+          this.showError = false;
+        }, 3000);
       },
     });
   }
@@ -48,6 +54,10 @@ export class Employeelist {
   age: string = '';
 
   createEmployee() {
+    if(this.username===''||this.salary===''||this.age==='')
+    {
+      alert('Enter a value');
+    }
     const newEmployee: Employee = {
       employee_name: this.username,
       employee_salary: this.salary,
@@ -59,12 +69,16 @@ export class Employeelist {
         this.getEmployees();
       },
       error: (err) => {
-        console.log('API ERROR:', err);
+        console.log('POST API ERROR:', err);
 
         const status = err?.status;
         const message = err?.error?.message || err?.message || 'Unknown error';
 
         this.errorMessage = `Error ${status}: ${message}`;
+        this.showError = true;
+        setTimeout(() => {
+          this.showError = false;
+        }, 3000);
       },
     });
   }
@@ -95,8 +109,22 @@ export class Employeelist {
       [...current].sort((a, b) => b.employee_name.localeCompare(a.employee_name)),
     );
   }
-
- 
-
-
+  dialog = inject(MatDialog);
+  openDialog(): void {
+    this.dialog
+      .open(DialogBox)
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+          this.username = res.name;
+          this.salary = res.salary;
+          this.age = res.age;
+          if(this.username!==''||this.salary!==''||this.age!=='')
+    {
+      this.createEmployee();
+    }
+        
+        }
+      });
+  }
 }
