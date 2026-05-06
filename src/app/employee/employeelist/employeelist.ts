@@ -1,19 +1,19 @@
 import { Component, inject, signal } from '@angular/core';
 import { Employee } from '../../model/Employee';
 import { Employeeservice } from '../../services/Employeeserivces/employeeservice';
-import { ApiCard } from '../api-card/api-card';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { FilterPipe } from '../../pipes/filter-pipe';
 import { MatDialog } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+
 import { DialogBox } from './dialog-box/dialog-box';
 import { MatInputModule } from '@angular/material/input';
+import { EmployeeCard } from '../employeecard/employeecard';
 @Component({
   selector: 'app-employeelist',
   standalone: true,
-  imports: [ApiCard, CommonModule, FormsModule, MatIconModule, FilterPipe, MatInputModule],
+  imports: [EmployeeCard, CommonModule, FormsModule, MatIconModule, FilterPipe, MatInputModule],
   templateUrl: './employeelist.html',
   styleUrl: './employeelist.css',
 })
@@ -127,4 +127,7 @@ export class Employeelist {
         }
       });
   }
+
+
+
 }

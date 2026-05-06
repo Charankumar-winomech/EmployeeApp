@@ -1,3 +1,6 @@
+*{
+    font-family: sans-serif;
+}
 .card {
   /* border: 2px solid rgb(165, 39, 39); */
   height: auto;

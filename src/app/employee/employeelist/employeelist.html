@@ -32,13 +32,12 @@
         </select>
       </div>
       <div>
-        <!-- <button (click)="toggleForm()" id="add-btn">Add Employee</button> -->
          <button (click)="openDialog()" id="add-btn">Add Employee</button>
       </div>
     </div>
     <div class="card-div">
       @for (emp of employeeList() | filter: searchTerm(); track $index) {
-        <app-api-card
+        <app-employee-card
           [name]="emp.employee_name"
           [id]="emp.id!"
           [salary]="emp.employee_salary"
