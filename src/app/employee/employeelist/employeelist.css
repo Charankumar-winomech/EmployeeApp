@@ -51,7 +51,7 @@ select:focus {
   font-weight: 700;
   cursor: pointer;
   margin: 10px;
-  /* margin-right: 80px; */
+  margin-right: 0px;
 }
 .form-content {
   display: flex;
@@ -85,12 +85,68 @@ select:focus {
   display: flex;
   justify-content: center;
 }
-.error {
-  color: red;
-  font-size: larger;
+#error-sign {
+  padding-top: 3px;
+  font-size: 23px;
 }
 
-dialog {
-  border: 2px solid black;
-  height: 40px;
+#error-msg {
+  font-size: 20px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+}
+
+/* error */
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.fade-out {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+}
+.error-enter {
+  animation: slideLeft 3s ease-out;
+}
+
+.error-leave {
+  animation: fadeOut 0.5s ease-out backwards;
+}
+.error {
+  position: fixed;
+  top: 20px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 250px;
+  max-width: 390px;
+  padding: 14px 18px;
+  border-radius: 5px;
+  background: rgba(255, 69, 69, 0.95);
+  color: white;
+  box-shadow:0 10px 25px rgba(255, 0, 0, 0.18);
+  font-weight: 500;
+  z-index: 9999;
 }

@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-api-card',
+  selector: 'app-employee-card',
   imports: [],
-  templateUrl: './api-card.html',
-  styleUrl: './api-card.css',
+  templateUrl: './employeecard.html',
+  styleUrl: './employeecard.css',
 })
-export class ApiCard {
+export class EmployeeCard {
   @Input() name: string = '';
   @Input() id: string = '';
   @Input() salary: string = '';
