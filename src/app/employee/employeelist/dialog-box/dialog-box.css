@@ -143,3 +143,8 @@ label{
   padding-bottom: 5px;
   color: red;
 }
+
+#btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5; 
+}

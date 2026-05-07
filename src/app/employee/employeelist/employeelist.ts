@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { FilterPipe } from '../../pipes/filter-pipe';
 import { MatDialog } from '@angular/material/dialog';
-
 import { DialogBox } from './dialog-box/dialog-box';
 import { MatInputModule } from '@angular/material/input';
 import { EmployeeCard } from '../employeecard/employeecard';
@@ -26,8 +25,9 @@ export class Employeelist {
     this.getEmployees();
   }
 
-  errorMessage: string = '';
-  showError: boolean = false;
+  errorMessage = signal('');
+  showError = signal(false);
+
   getEmployees() {
     this.empService.getEmployees().subscribe({
       next: (res: any) => {
@@ -35,15 +35,15 @@ export class Employeelist {
       },
       error: (err) => {
         console.log('GET API ERROR:', err);
-
+  
         const status = err?.status;
         const message = err?.error?.message || err?.message || 'Unknown error';
 
-        this.errorMessage = `Error ${status}: ${message}`;
-        this.showError = true;
+        this.errorMessage.set(`Error ${status}: ${message}`);
+        this.showError.set(true);
         setTimeout(() => {
-          this.showError = false;
-        }, 3000);
+          this.showError.set(false);
+        }, 4000);
       },
     });
   }
@@ -54,8 +54,7 @@ export class Employeelist {
   age: string = '';
 
   createEmployee() {
-    if(this.username===''||this.salary===''||this.age==='')
-    {
+    if (this.username === '' || this.salary === '' || this.age === '') {
       alert('Enter a value');
     }
     const newEmployee: Employee = {
@@ -74,10 +73,10 @@ export class Employeelist {
         const status = err?.status;
         const message = err?.error?.message || err?.message || 'Unknown error';
 
-        this.errorMessage = `Error ${status}: ${message}`;
-        this.showError = true;
+        this.errorMessage.set(`Error ${status}: ${message}`);
+        this.showError.set(true);
         setTimeout(() => {
-          this.showError = false;
+          this.showError.set(false);
         }, 3000);
       },
     });
@@ -119,15 +118,10 @@ export class Employeelist {
           this.username = res.name;
           this.salary = res.salary;
           this.age = res.age;
-          if(this.username!==''||this.salary!==''||this.age!=='')
-    {
-      this.createEmployee();
-    }
-        
+          if (this.username !== '' || this.salary !== '' || this.age !== '') {
+            this.createEmployee();
+          }
         }
       });
   }
-
-
-
 }

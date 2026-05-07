@@ -5,18 +5,16 @@
         <h1>Employees({{ employeeList().length }})</h1>
         <h3 id="details">All the employees of the company are listed here</h3>
       </div>
-      @if(showError){
-      <div class="error" 
-        animate.enter="error-enter" 
-       animate.leave="error-leave">
-        <mat-icon id="error-sign">
-          <span class="material-symbols-outlined"> error </span>
-        </mat-icon>
-        <span id="error-msg">
-        {{ errorMessage }}
-        </span>
-      </div>
-    }
+      @if (showError()) {
+        <div class="error" animate.enter="error-enter" animate.leave="error-leave">
+          <mat-icon id="error-sign">
+            <span class="material-symbols-outlined"> error </span>
+          </mat-icon>
+          <span id="error-msg">
+            {{ errorMessage() }}
+          </span>
+        </div>
+      }
     </div>
 
     <div class="search-div">
@@ -32,7 +30,7 @@
         </select>
       </div>
       <div>
-         <button (click)="openDialog()" id="add-btn">Add Employee</button>
+        <button (click)="openDialog()" id="add-btn">Add Employee</button>
       </div>
     </div>
     <div class="card-div">
@@ -45,6 +43,5 @@
         />
       }
     </div>
-   
   </div>
 </div>

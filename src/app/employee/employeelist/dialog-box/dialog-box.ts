@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIcon } from "@angular/material/icon";
-import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators,ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-box',
@@ -17,12 +17,16 @@ export class DialogBox {
 
   data= new FormGroup(
     {
-      name:new FormControl('',[Validators.required]),
+      name:new FormControl('',[Validators.required,this.WhitespaceValidator]),
       salary:new FormControl('',[Validators.required]),
       age:new FormControl('',[Validators.required])
     }
   )
 
+  WhitespaceValidator(control: AbstractControl) {
+  const isWhitespace = (control.value || '').trim().length === 0;
+  return !isWhitespace ? null : { 'required': true };
+}
   get form()
   {
     return this.data.controls;
