@@ -21,7 +21,9 @@ export class Employee {
   }
 
   signOut() {
-    console.log('clicked');
-    this.router.navigate(['']);
+
+  localStorage.removeItem('user');
+  this.router.navigate(['/login']);
+
   }
 }

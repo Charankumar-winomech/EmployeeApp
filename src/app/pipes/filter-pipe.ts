@@ -12,7 +12,8 @@ export class FilterPipe implements PipeTransform {
 
     const txt = searchTerm.toLowerCase();
     return value.filter((data) => {
-      return data.employee_name.toLowerCase().includes(txt);
+      return data.employee_name.toLowerCase().includes(txt) ||  data.id?.toString().includes(txt);
     });
+
   }
 }

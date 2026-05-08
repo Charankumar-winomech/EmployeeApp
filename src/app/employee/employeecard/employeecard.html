@@ -1,23 +1,34 @@
 <div class="card">
+
+  <div class="actions">
+    <button class="edit-btn">Edit</button>
+    <button class="delete-btn">Delete</button>
+  </div>
+
   <div class="align">
     <div class="image">
       <img
-        src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80"
+        src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg"
         alt="profile"
       />
     </div>
+  
     <div class="name">
       <h2 id="specific">{{ name }}</h2>
       <h4 id="specific-dept">Emp Id: {{ id }}</h4>
     </div>
   </div>
-
+<hr>
   <div class="content">
     <h3>
-      Salary: <span id="emp-code">{{ salary }}</span>
+      Salary:
+      <span id="emp-code">{{ salary }}</span>
     </h3>
+
     <h3>
-      Age: <span id="emp-code">{{ age }}</span>
+      Age:
+      <span id="emp-code">{{ age }}</span>
     </h3>
   </div>
+
 </div>

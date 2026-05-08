@@ -2,7 +2,6 @@
     font-family: sans-serif;
 }
 .card {
-  /* border: 2px solid rgb(165, 39, 39); */
   height: auto;
   width: 300px;
   padding-left: 5px;
@@ -14,6 +13,7 @@
   border-radius: 5%;
   display: inline-block;
   vertical-align: top;
+  position: relative;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
@@ -21,7 +21,6 @@
 }
 .align {
   height: 150px;
-  /* border: 2px solid green; */
   display: flex;
   flex-direction: row;
   padding-left: 10px;
@@ -39,7 +38,7 @@ img {
 .content {
   font-family: sans-serif;
   padding: 20px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 #specific {
   margin-bottom: 15px;
@@ -58,13 +57,9 @@ img {
   color: rgb(113, 113, 113);
   font-weight: lighter;
 }
-/* .image{
-    display: flex;
-    flex-direction: row;
-    margin-top: 30px;
-}  */
+
 .name {
-  margin-top: 20px;
+  margin-top: 15px;
   font-family: sans-serif;
   font-weight: 300;
   padding-left: 22px;
@@ -72,3 +67,35 @@ img {
 strong {
   color: rgb(41, 61, 61);
 }
+
+hr{
+  width: 80%;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.actions {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  border: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.edit-btn {
+  background-color: #020b20;
+  color: white;
+}
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+}
+

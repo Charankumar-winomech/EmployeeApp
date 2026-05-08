@@ -1,0 +1,60 @@
+<div class="main">
+  <div class="div1">
+    <div class="Form">
+      <h1>Hello,</h1>
+      <h1>Create Account</h1>
+      <p>Sign up to get started</p>
+
+      <div class="form-div">
+        <form (ngSubmit)="onSubmit()">
+          <input
+            type="text"
+            name="empName"
+            placeholder="Employee Name"
+            class="inputs"
+            [(ngModel)]="name"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            class="inputs"
+            [(ngModel)]="email"
+          />
+
+          <div class="password-wrapper">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              placeholder="Password"
+              class="inputs"
+              [(ngModel)]="pass"
+            />
+
+            <mat-icon class="eye-icon" (click)="togglePassword()">
+              {{ showPassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </div>
+          <!-- need to change -->
+          <input
+            type="text"
+            name="dob"
+            placeholder="Enter a Role"
+            class="inputs"
+            [(ngModel)]="role"
+          />
+
+          <div class="btn-div">
+            <button type="submit" class="btn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="div2">
+    <img src="https://cdn-lite.ip2location.com/img/sign-up.png" alt="signUp image" />
+  </div>
+</div>
