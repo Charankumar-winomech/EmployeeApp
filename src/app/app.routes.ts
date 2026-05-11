@@ -21,7 +21,7 @@ export const routes: Routes = [
   {
     path: 'employee',
     component: Employee,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
   },
   {
     path: '**',

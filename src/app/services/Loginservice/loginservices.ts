@@ -13,7 +13,7 @@ export class Loginservices {
      console.log(user);
      return this.api.postSignIn(user);
   }
-
+  // for Login Page
   CheckUser(details:any)
   {
     return this.api.postLoginIn(details);

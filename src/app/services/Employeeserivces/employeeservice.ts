@@ -13,4 +13,12 @@ export class Employeeservice {
     console.log(employee);
     return this.api.postRequest('create', employee);
   }
+  
+  changePassword(newPassword:any)
+  {
+    return this.api.postChange(newPassword);
+  }
+
+
+
 }

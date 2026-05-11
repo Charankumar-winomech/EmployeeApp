@@ -53,7 +53,16 @@
       </div>
     </div>
   </div>
-
+   @if(showError()) {
+  <div
+    class="error"
+    animate.enter="error-enter" animate.leave="error-leave"
+    [class.success-message]="isSuccess()"
+    [class.error-message]="!isSuccess()"
+  >
+    {{ Message() }}
+  </div>
+}
   <div class="div2">
     <img src="https://cdn-lite.ip2location.com/img/sign-up.png" alt="signUp image" />
   </div>

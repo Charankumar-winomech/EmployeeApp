@@ -20,7 +20,17 @@
           <mat-panel-title>Organization</mat-panel-title>
         </mat-expansion-panel-header>
         <p>Roles</p>
-        <p>Employee</p>
+        <p id="change-password" (click)="EmployeeShow(true)">Employee</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon id="dash-icon">
+            <span class="material-symbols-outlined"> settings </span>
+          </mat-icon>
+          <mat-panel-title>Settings</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p id="change-password" (click)="PasswordChange(true)">Change Password</p>
       </mat-expansion-panel>
     </div>
     <div class="bottom-div">
@@ -38,6 +48,105 @@
   </div>
 
   <div class="content">
+   @if(Employee()) {
+
     <app-employeelist />
+
+  }
+  @else if(ChangePassword())
+  {
+
+  <div class="password-container">
+
+    <div class="div1">
+
+      <div class="Form">
+
+        <h1>Change Password</h1>
+
+        <p>Change your password with existing password</p>
+
+        <div class="form-div">
+
+          <form (ngSubmit)="Change()">
+
+            <!-- OLD PASSWORD -->
+
+            <div class="password-wrapper">
+
+              <input
+                [type]="showPassword1 ? 'text' : 'password'"
+                name="oldpassword"
+                [(ngModel)]="old"
+                placeholder="Enter Old Password"
+                class="inputs"
+              />
+
+              <mat-icon
+                class="eye-icon"
+                (click)="togglePassword1()"
+              >
+                {{ showPassword1 ? 'visibility' : 'visibility_off' }}
+              </mat-icon>
+
+            </div>
+
+            <!-- NEW PASSWORD -->
+
+            <div class="password-wrapper">
+
+              <input
+                [type]="showPassword2 ? 'text' : 'password'"
+                name="newpassword"
+                [(ngModel)]="new"
+                placeholder="Enter New Password"
+                class="inputs"
+              />
+
+              <mat-icon
+                class="eye-icon"
+                (click)="togglePassword2()"
+              >
+                {{ showPassword2 ? 'visibility' : 'visibility_off' }}
+              </mat-icon>
+
+            </div>
+
+            <div class="btn-div">
+
+              <button type="submit" class="btn">
+                Change
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    @if (showMessage()) {
+
+      <div
+        class="error"
+        animate.enter="error-enter"
+        animate.leave="error-leave"
+        [class.success-message]="isSuccess()"
+        [class.error-message]="!isSuccess()"
+      >
+        {{ Message() }}
+      </div>
+
+    }
+
   </div>
+
+  }
+
+ 
+
+</div>
 </div>

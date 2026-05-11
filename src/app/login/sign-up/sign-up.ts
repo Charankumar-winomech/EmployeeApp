@@ -33,7 +33,7 @@ export class SignUp {
         email: this.email,
         password: this.pass,
         role: this.role.toUpperCase(),
-        username: this.name,
+        username: this.name.toLowerCase(),
       })
       .subscribe({
         next: (res: any) => {
