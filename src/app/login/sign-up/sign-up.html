@@ -34,16 +34,15 @@
             />
 
             <mat-icon class="eye-icon" (click)="togglePassword()">
-              {{ showPassword ? 'visibility_off' : 'visibility' }}
+              {{ showPassword ? 'visibility':'visibility_off'  }}
             </mat-icon>
           </div>
           <!-- need to change -->
           <input
-            type="text"
+            type="date"
             name="dob"
-            placeholder="Enter a Role"
             class="inputs"
-            [(ngModel)]="role"
+            [(ngModel)]="dob"
           />
 
           <div class="btn-div">

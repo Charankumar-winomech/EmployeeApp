@@ -12,10 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './login.css',
 })
 export class Login {
-  userName: string = '';
+  userEmail: string = '';
   passWord: string = '';
-  mail: string = '';
-  
+
+
   Message = signal('');
   showMessage = signal(false);
   isSuccess = signal(false);
@@ -40,9 +40,31 @@ export class Login {
     this.showPassword = !this.showPassword;
   }
   check() {
+    if (!this.userEmail || !this.passWord) {
+      this.Message.set('Username and password are required');
+      this.isSuccess.set(false);
+      this.showMessage.set(true);
+
+      setTimeout(() => {
+        this.showMessage.set(false);
+      }, 3000);
+
+      return;
+    }
+    if (this.passWord.length < 4) {
+      this.Message.set('Password must be at least 4 characters');
+      this.isSuccess.set(false);
+      this.showMessage.set(true);
+
+      setTimeout(() => {
+        this.showMessage.set(false);
+      }, 3000);
+
+      return;
+    }
     this.Login.CheckUser({
-      password: this.passWord,
-      username: this.userName,
+      "password": this.passWord,
+      "userEmail": this.userEmail,
     }).subscribe({
       next: (res: any) => {
         console.log('login response', res);
@@ -54,20 +76,19 @@ export class Login {
           return;
         }
 
-        localStorage.setItem('accessToken', res.data.accessToken);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-
-        console.log('Navigating to employee...');
+        localStorage.setItem('accessToken', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data));
 
         this.router.navigate(['/employee'], {
           state: {
-            Name: this.userName,
+            Name: res.data.userName,
           },
         });
-      },
-      error: (err) => {
-        console.log('POST API ERROR:', err);
 
+        console.log(localStorage.getItem('accessToken'))
+      },
+
+      error: (err) => {
         const status = err?.status;
         const message = err?.error?.message || err?.message || 'Unknown error';
 
@@ -81,7 +102,6 @@ export class Login {
       },
     });
   }
-
   SignUp() {
     this.router.navigate(['signup']);
   }

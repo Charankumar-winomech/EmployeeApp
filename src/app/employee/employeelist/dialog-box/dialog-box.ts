@@ -22,7 +22,9 @@ export class DialogBox {
     {
       name:new FormControl('',[Validators.required,this.WhitespaceValidator]),
       salary:new FormControl('',[Validators.required]),
-      age:new FormControl('',[Validators.required])
+      mail:new FormControl('',[Validators.required, Validators.email]),
+      dob:new FormControl('',[Validators.required])
+
     }
   )
 

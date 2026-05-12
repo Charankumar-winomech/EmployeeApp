@@ -1,9 +1,8 @@
 <div class="card">
 
-  <div class="actions">
-    <button class="edit-btn">Edit</button>
-    <button class="delete-btn">Delete</button>
-  </div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-icon">
+    ⋮
+  </button>
 
   <div class="align">
     <div class="image">
@@ -12,23 +11,41 @@
         alt="profile"
       />
     </div>
-  
+
     <div class="name">
-      <h2 id="specific">{{ name }}</h2>
-      <h4 id="specific-dept">Emp Id: {{ id }}</h4>
+      <h2>{{ employee.employeeName }}</h2>
+      <h4>Email: {{ employee.employeeEmail }}</h4>
     </div>
   </div>
-<hr>
-  <div class="content">
-    <h3>
-      Salary:
-      <span id="emp-code">{{ salary }}</span>
-    </h3>
 
-    <h3>
-      Age:
-      <span id="emp-code">{{ age }}</span>
-    </h3>
+  <div class="content">
+    <h3>Salary: {{ employee.employeeSalary }}</h3>
+    <h3>DOB: {{ employee.employeeDob | date }}</h3>
+    <h3>Email: {{ employee.employeeEmail }}</h3>
   </div>
 
 </div>
+@if(isEditOpen){
+<div  class="edit-box">
+
+  <input [(ngModel)]="editData.employeeName" placeholder="Name" />
+  <input [(ngModel)]="editData.employeeEmail" placeholder="Email" />
+  <input [(ngModel)]="editData.employeeDob" type="date" />
+  <input [(ngModel)]="editData.employeeSalary" type="number" />
+    <div class="edit-actions">
+      <button (click)="saveEmployee()">Save</button>
+      <button (click)="isEditOpen=false">Cancel</button>
+    </div>
+</div>
+
+}
+<mat-menu #menu="matMenu">
+
+  <button mat-menu-item (click)="updateEmployee(employee)">
+    Edit
+  </button>
+
+  <button mat-menu-item (click)="deleteEmployee(employee.employeeId)">
+    Delete
+  </button>
+</mat-menu>

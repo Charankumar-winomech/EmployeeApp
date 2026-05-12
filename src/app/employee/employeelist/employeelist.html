@@ -6,7 +6,8 @@
         <h3 id="details">All the employees of the company are listed here</h3>
       </div>
       @if (showError()) {
-        <div class="error" animate.enter="error-enter" animate.leave="error-leave">
+        <div class="error" animate.enter="error-enter" animate.leave="error-leave"  [class.success-message]="isSuccess()"
+    [class.error-message]="!isSuccess()">
           <mat-icon id="error-sign">
             <span class="material-symbols-outlined"> error </span>
           </mat-icon>
@@ -20,13 +21,11 @@
     <div class="search-div">
       <div>
         <mat-icon id="mat-icons"> search </mat-icon>
-
         <input type="search" placeholder="Search" id="target-search" [(ngModel)]="searchTerm" />
-
         <select name="filters" [(ngModel)]="sortOrder" (ngModelChange)="onSortChange($event)">
           <option value="">Filter</option>
-          <option value="ascending" (click)="sortAtoZ()">A to Z</option>
-          <option value="descending" (click)="sortZtoA()">Z to A</option>
+          <option value="ascending"  (click)="sortAtoZ()">A to Z</option>
+          <option value="descending"  (click)="sortZtoA()">Z to A</option>
         </select>
       </div>
       <div>
@@ -35,12 +34,7 @@
     </div>
     <div class="card-div">
       @for (emp of employeeList() | filter: searchTerm(); track $index) {
-        <app-employee-card
-          [name]="emp.employee_name"
-          [id]="emp.id!"
-          [salary]="emp.employee_salary"
-          [age]="emp.employee_age"
-        />
+        <app-employee-card [employee]="emp" (employeeDeleted)="deleteEmployeeSuccess()" (employeeUpdated)="getEmployees()"></app-employee-card>
       }
     </div>
   </div>

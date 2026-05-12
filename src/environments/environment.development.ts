@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
-  employeeUrl: 'https://dummy.restapiexample.com/api/v1/',
-  RegisterUrl:'https://api.freeapi.app/api/v1/users/register',
-  LoginUrl:'https://api.freeapi.app/api/v1/users/login',
+ employeeUrl:'http://192.168.0.25:5000/api/Employee',
+  RegisterUrl:'http://192.168.0.25:5000/api/AuthControllers/register',
+  LoginUrl:'http://192.168.0.25:5000/api/AuthControllers/login',
   ChangeUrl:'https://api.freeapi.app/api/v1/users/change-password',
 };

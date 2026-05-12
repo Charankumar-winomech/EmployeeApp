@@ -82,12 +82,25 @@ select:focus {
   width: 100%;
   align-items: stretch;
 } */
+/* .card-div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+} */
 .card-div {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 270px);
-  gap: 10px 43px;
-  align-content: start;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 20px 70px;
+  justify-content: start;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.card {
   width: 100%;
+  box-sizing: border-box;
 }
  .card {
   transition: transform 0.2s ease;
@@ -160,4 +173,13 @@ select:focus {
   box-shadow:0 10px 25px rgba(255, 0, 0, 0.18);
   font-weight: 500;
   z-index: 9999;
+}
+
+.error-message {
+  background: rgba(255, 69, 69, 0.95);
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.18);
+}
+.success-message {
+  background: rgba(46, 204, 113, 0.95);
+  box-shadow: 0 10px 25px rgba(46, 204, 113, 0.25);
 }

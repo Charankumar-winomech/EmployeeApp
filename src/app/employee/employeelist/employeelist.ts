@@ -17,7 +17,9 @@ import { EmployeeCard } from '../employeecard/employeecard';
   styleUrl: './employeelist.css',
 })
 export class Employeelist {
-  employeeList = signal<Employee[]>([]);
+
+  employeeList = signal<any[]>([]);
+
   empService = inject(Employeeservice);
   searchTerm = signal('');
 
@@ -31,7 +33,8 @@ export class Employeelist {
   getEmployees() {
     this.empService.getEmployees().subscribe({
       next: (res: any) => {
-        this.employeeList.set(res.data);
+        this.employeeList.set(res);
+        console.log(res);
       },
       error: (err) => {
         console.log('GET API ERROR:', err);
@@ -47,21 +50,36 @@ export class Employeelist {
       },
     });
   }
+  isSuccess = signal(false);
+  deleteEmployeeSuccess() {
+
+  this.errorMessage.set('Employee deleted successfully');
+  this.showError.set(true);
+  this.isSuccess.set(true);
+  setTimeout(() => {
+    this.showError.set(false);
+    this.isSuccess.set(false);
+  }, 3000);
+
+  this.getEmployees();
+}
 
   //details
   username: string = '';
+  usermail:string='';
   salary: string = '';
-  age: string = '';
+  dob: string = '';
 
   createEmployee() {
-    if (this.username === '' || this.salary === '' || this.age === '') {
+    if (this.username === '' || this.salary === '' || this.dob === '') {
       alert('Enter a value');
     }
-    const newEmployee: Employee = {
-      employee_name: this.username,
-      employee_salary: this.salary,
-      employee_age: this.age,
-    };
+    const newEmployee = {
+  "employeeName": this.username,
+  "employeeEmail": this.usermail,
+  "employeeDob": this.dob,
+  "employeeSalary": this.salary
+};
     this.empService.addEmployees(newEmployee).subscribe({
       next: (res) => {
         console.log('Employee Added Successfully', res);
@@ -98,16 +116,20 @@ export class Employeelist {
     }
   }
 
-  sortAtoZ() {
-    return this.employeeList.update((current) =>
-      [...current].sort((a, b) => a.employee_name.localeCompare(b.employee_name)),
-    );
-  }
-  sortZtoA() {
-    return this.employeeList.update((current) =>
-      [...current].sort((a, b) => b.employee_name.localeCompare(a.employee_name)),
-    );
-  }
+ sortAtoZ() {
+  this.employeeList.update((current) =>
+    [...current].sort((a, b) =>
+      (a.employeeName || '').localeCompare(b.employeeName || '')
+    )
+  );
+}
+ sortZtoA() {
+  this.employeeList.update((current) =>
+    [...current].sort((a, b) =>
+      (b.employeeName || '').localeCompare(a.employeeName || '')
+    )
+  );
+}
   dialog = inject(MatDialog);
   openDialog(): void {
     this.dialog
@@ -117,8 +139,9 @@ export class Employeelist {
         if (res) {
           this.username = res.name;
           this.salary = res.salary;
-          this.age = res.age;
-          if (this.username !== '' || this.salary !== '' || this.age !== '') {
+          this.dob = res.dob;
+          this.usermail=res.mail;
+          if (this.username !== '' || this.salary !== '' || this.dob !== '') {
             this.createEmployee();
           }
         }

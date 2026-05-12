@@ -13,7 +13,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 export class SignUp {
   name: string = '';
   email: string = '';
-  role: string = '';
+  dob: string = '';
   pass: string = '';
 
   showPassword = false;
@@ -28,12 +28,53 @@ export class SignUp {
   isSuccess = signal(false);
 
   onSubmit() {
+    
+    if (!this.name || !this.email || !this.dob || !this.pass) {
+      this.Message.set('All fields are required');
+      this.showError.set(true);
+      this.isSuccess.set(false);
+
+      setTimeout(() => {
+        this.showError.set(false);
+      }, 3000);
+
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(this.email)) {
+      this.Message.set('Enter a valid email address');
+      this.showError.set(true);
+      this.isSuccess.set(false);
+
+      setTimeout(() => {
+        this.showError.set(false);
+      }, 3000);
+
+      return;
+    }
+
+    if (this.pass.length < 6) {
+      this.Message.set('Password must be at least 6 characters');
+      this.showError.set(true);
+      this.isSuccess.set(false);
+
+      setTimeout(() => {
+        this.showError.set(false);
+      }, 3000);
+
+      return;
+    }
+
+    
+
     this.signIn
       .addUser({
-        email: this.email,
-        password: this.pass,
-        role: this.role.toUpperCase(),
-        username: this.name.toLowerCase(),
+        "userEmail": this.email,
+        "password": this.pass,
+        "dob": this.dob,
+        "userName": this.name,
       })
       .subscribe({
         next: (res: any) => {
@@ -50,12 +91,10 @@ export class SignUp {
         },
 
         error: (err) => {
-          console.log('POST API ERROR:', err);
-
-          const status = err?.status;
+          // const status = err?.status;
           const message = err?.error?.message || err?.message || 'Unknown error';
 
-          this.Message.set(`Error ${status}: ${message}`);
+          this.Message.set(`Error ${message}`);
 
           this.showError.set(true);
           this.isSuccess.set(false);

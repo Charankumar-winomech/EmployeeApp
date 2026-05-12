@@ -6,14 +6,23 @@ import { Employee } from '../../model/Employee';
 })
 export class Employeeservice {
   private api = inject(Apiservice);
+    
   getEmployees() {
-    return this.api.getRequest<Employee[]>(`employees`);
+    return this.api.getRequest();
   }
-  addEmployees(employee: Employee) {
+
+  addEmployees(employee: any) {
     console.log(employee);
-    return this.api.postRequest('create', employee);
+    return this.api.postRequest(employee);
   }
-  
+  deleteEmployee(id:any)
+  {
+    return this.api.deleteRequest(id);
+  }
+  editEmployee(id:any,payload:any)
+  {
+    return this.api.updateRequest(id,payload);
+  }
   changePassword(newPassword:any)
   {
     return this.api.postChange(newPassword);
