@@ -43,15 +43,13 @@ export class Login {
     this.showPassword = !this.showPassword;
   }
 
+
   check() {
 
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.invalid) {
-      this.Message.set('Please enter valid email and password');
-      this.isSuccess.set(false);
-      this.showMessage.set(true);
-      setTimeout(() => this.showMessage.set(false), 3000);
+      console.log('values are empty')
       return;
     }
 

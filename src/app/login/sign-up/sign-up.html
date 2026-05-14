@@ -6,7 +6,7 @@
       <p>Sign up to get started</p>
 
       <div class="form-div">
-        <form (ngSubmit)="onSubmit()">
+        <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
           <input
             type="text"
             name="empName"
@@ -16,7 +16,7 @@
             #nameCtrl="ngModel"
             required
           />
-          @if (nameCtrl.touched && nameCtrl.invalid) {
+          @if (nameCtrl.touched && nameCtrl?.invalid) {
             <div class="label-error">Name is required</div>
           }
           <input
@@ -29,7 +29,7 @@
             required
           />
 
-          @if (emailCtrl.touched && emailCtrl.invalid) {
+          @if (emailCtrl.touched && emailCtrl?.invalid) {
             <div class="label-error">Valid email is required</div>
           }
           <div class="password-wrapper">

@@ -27,7 +27,12 @@ export class SignUp {
   showError = signal(false);
   isSuccess = signal(false);
 
-  onSubmit() {
+  onSubmit(form:any) {
+    form.control.markAllAsTouched();
+
+  if (form.invalid) {
+    return; 
+  }
     
     if (!this.name || !this.email || !this.dob || !this.pass) {
       this.Message.set('All fields are required');
