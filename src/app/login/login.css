@@ -6,12 +6,13 @@
   /* min-height: 100vh;
   */
 }
-.div1, .div2 {
+.div1,
+.div2 {
   width: 50%;
 }
-.div1{
-    border-radius: 25px;
-    border: 1px solid rgb(224, 223, 223);
+.div1 {
+  border-radius: 25px;
+  border: 1px solid rgb(224, 223, 223);
 }
 
 .Form {
@@ -19,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding-left: 40px; 
+  padding-left: 40px;
 }
 
 .form-div {
@@ -28,7 +29,7 @@
 }
 .inputs {
   height: 45px;
-  width: 95%; 
+  width: 95%;
   padding-left: 12px;
   border: 1px solid rgb(213, 210, 210);
   border-radius: 6px;
@@ -36,19 +37,19 @@
   margin-bottom: 8px;
   display: block;
 }
-hr{
+hr {
   width: 50px;
 }
 
 #forgot {
-  width: 100%; 
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 5px;
 }
 
-a{
+a {
   text-decoration: none;
   font-size: 15px;
 }
@@ -62,14 +63,11 @@ a{
   margin-top: 30px;
   cursor: pointer;
   border: none;
-
 }
 
-
-.btn-div{
-  display:flex;
+.btn-div {
+  display: flex;
   flex-direction: column;
-
 }
 .divider {
   display: flex;
@@ -77,14 +75,12 @@ a{
   gap: 10px;
   margin: 30px 0 10px 0;
   color: #888;
-  width:32%;
+  width: 32%;
   max-width: 450px;
   justify-content: center;
-
 }
 
-
-h1{
+h1 {
   margin: 0px;
 }
 .inputs:focus,
@@ -95,90 +91,85 @@ h1{
 img {
   height: 100%;
   width: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   border-radius: 25px;
 }
 
-.div1:hover, .div2:hover {
+.div1:hover,
+.div2:hover {
   border-radius: 25px;
   box-shadow: 0px 0px 10px 10px rgb(231, 228, 228);
 }
 
 @media (max-width: 768px) {
   .main {
-    flex-direction: column; 
+    flex-direction: column;
   }
-  
-  .div1, .div2 {
+
+  .div1,
+  .div2 {
     width: 100%;
     height: auto;
   }
 
-  .btn-div{
+  .btn-div {
     justify-content: center;
-    
+
     align-items: center;
   }
-  .div1{
+  .div1 {
     padding: 30px;
   }
   .Form {
-   
     height: 100%;
-    
   }
   .form-div {
-    width: 90%; 
+    width: 90%;
   }
 
   .btn {
-    width: 100%; 
+    width: 100%;
+  }
+
+  img {
+    display: none;
+  }
 }
 
-img{
-  display: none;
-}
-}
-
-@media(max-width: 1138px)
-{
-
-.main{
-  justify-content: center;
-  align-items: center;
-}
-.div1,.div2{
-  height: 90%;
-  width: 90%;
-  justify-content: center;
-  align-items: center;
-}
-.div1{
+@media (max-width: 1138px) {
+  .main {
+    justify-content: center;
+    align-items: center;
+  }
+  .div1,
+  .div2 {
+    height: 90%;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+  }
+  .div1 {
     padding: 30px 0 30px 0px;
   }
-hr{
-  width:20px;
+  hr {
+    width: 20px;
+  }
 }
 
-
-}
-
-@media(max-width: 410px)
-{
-  #forgot{
+@media (max-width: 410px) {
+  #forgot {
     flex-direction: column;
     align-items: flex-start;
   }
-
 }
 
 @media (min-width: 1200px) {
   .form-div {
-    max-width: 450px; 
+    max-width: 450px;
   }
   .inputs {
-    height: 50px; 
-    
+    height: 50px;
+
     font-size: 1.2rem;
   }
   .btn {
@@ -186,29 +177,24 @@ hr{
     width: 200px;
     font-size: 1.1rem;
   }
-   .divider {
+  .divider {
     max-width: 100%;
   }
 }
 @media (min-width: 1200px) and (max-width: 1594px) {
-
   .divider {
-   
     margin-left: 30px;
-  
   }
-
-  
 }
-@media (min-width: 1600px ) {
+@media (min-width: 1600px) {
   .form-div {
-    max-width: 600px; 
+    max-width: 600px;
   }
-  h1{
+  h1 {
     font-size: 60px;
   }
   .inputs {
-    height: 55px; 
+    height: 55px;
     font-size: 1.2rem;
   }
   .btn {
@@ -217,7 +203,6 @@ hr{
     font-size: 1.1rem;
   }
 }
-
 
 @keyframes slideLeft {
   from {
@@ -263,7 +248,7 @@ hr{
   padding: 14px 18px;
   border-radius: 5px;
   color: white;
-  box-shadow:0 10px 25px rgba(255, 0, 0, 0.18);
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.18);
   font-weight: 500;
   z-index: 9999;
 }
@@ -279,19 +264,26 @@ hr{
 
 .password-wrapper {
   position: relative;
-  width: 100%;
+  width: 95%;
 }
 
 .password-wrapper .inputs {
-  width: 95%;
+  width: 100%;
 }
 
 .eye-icon {
   position: absolute;
-  right: 30px;
+  right: 10px;
   top: 50%;
   transform: translateY(-35%);
   cursor: pointer;
   color: gray;
   font-size: 22px;
+}
+
+.label-error {
+  color: red;
+  margin-top: 15px;
+  margin-left: 5px;
+  font-size: 17px;
 }

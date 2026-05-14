@@ -5,27 +5,34 @@
       <h1>Welcome Back</h1>
       <p>Hey,welcome back to your special place</p>
       <div class="form-div">
-        <form (ngSubmit)="check()">
+        <form [formGroup]="loginForm" (ngSubmit)="check()">
           <input
             type="text"
             name="username"
             placeholder="Enter a Email"
-            [(ngModel)]="userEmail"
+            formControlName="email"
             class="inputs"
           />
-         <div class="password-wrapper">
+
+          @if (loginForm.get('email')?.dirty && loginForm.get('email')?.invalid) {
+            <div class="label-error">Valid email is required</div>
+          }
+          <div class="password-wrapper">
             <input
               [type]="showPassword ? 'text' : 'password'"
               name="password"
+              formControlName="password"
               placeholder="Password"
               class="inputs"
-              [(ngModel)]="passWord"
             />
 
             <mat-icon class="eye-icon" (click)="togglePassword()">
-              {{ showPassword ? 'visibility_off' : 'visibility' }}
+              {{ showPassword ? 'visibility' : 'visibility_off' }}
             </mat-icon>
           </div>
+          @if (loginForm.get('password')?.dirty && loginForm.get('password')?.invalid) {
+            <div class="label-error">Password is required</div>
+          }
           <div id="forgot">
             <div>
               <input type="checkbox" id="rem" />
@@ -38,9 +45,9 @@
           <div class="btn-div">
             <button type="submit" class="btn">Sign In</button>
             <div class="divider">
-              <hr>
+              <hr />
               <span>or</span>
-              <hr>
+              <hr />
             </div>
             <button class="btn" (click)="SignUp()">Sign Up</button>
           </div>
@@ -48,16 +55,17 @@
       </div>
     </div>
   </div>
-  @if(showMessage()) {
-  <div
-    class="error"
-    animate.enter="error-enter" animate.leave="error-leave"
-    [class.success-message]="isSuccess()"
-    [class.error-message]="!isSuccess()"
-  >
-    {{ Message() }}
-  </div>
-}
+  @if (showMessage()) {
+    <div
+      class="error"
+      animate.enter="error-enter"
+      animate.leave="error-leave"
+      [class.success-message]="isSuccess()"
+      [class.error-message]="!isSuccess()"
+    >
+      {{ Message() }}
+    </div>
+  }
   <div class="div2">
     <img src="loginimage.avif" alt="no image" />
   </div>

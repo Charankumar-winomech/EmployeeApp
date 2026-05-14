@@ -25,20 +25,7 @@
   </div>
 
 </div>
-@if(isEditOpen){
-<div  class="edit-box">
 
-  <input [(ngModel)]="editData.employeeName" placeholder="Name" />
-  <input [(ngModel)]="editData.employeeEmail" placeholder="Email" />
-  <input [(ngModel)]="editData.employeeDob" type="date" />
-  <input [(ngModel)]="editData.employeeSalary" type="number" />
-    <div class="edit-actions">
-      <button (click)="saveEmployee()">Save</button>
-      <button (click)="isEditOpen=false">Cancel</button>
-    </div>
-</div>
-
-}
 <mat-menu #menu="matMenu">
 
   <button mat-menu-item (click)="updateEmployee(employee)">

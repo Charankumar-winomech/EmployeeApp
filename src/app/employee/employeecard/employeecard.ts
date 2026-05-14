@@ -2,8 +2,11 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { Employeeservice } from '../../services/Employeeserivces/employeeservice';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+
+import { Employeeservice } from '../../services/Employeeserivces/employeeservice';
+import { DialogBox } from '../employeelist/dialog-box/dialog-box';
 
 @Component({
   selector: 'app-employee-card',
@@ -20,38 +23,37 @@ export class EmployeeCard {
 
   employeeservice = inject(Employeeservice);
 
-  isEditOpen = false;
-  editData: any = {};
-
+  constructor(private dialog: MatDialog) {}
 
   updateEmployee(emp: any) {
-    this.editData = { ...emp };   
-    this.isEditOpen = true;
+    const dialogRef = this.dialog.open(DialogBox, {
+      width: '500px',
+      data: emp  
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const payload = {
+          employeeName: result.name,
+          employeeEmail: result.mail,
+          employeeDob: result.dob,
+          employeeSalary: result.salary
+        };
+
+        this.employeeservice.editEmployee(emp.employeeId, payload)
+          .subscribe({
+            next: () => {
+              console.log("Employee updated successfully");
+              this.employeeUpdated.emit();
+            },
+            error: (err) => {
+              console.log("UPDATE ERROR:", err);
+            }
+          });
+      }
+    });
   }
 
-  saveEmployee() {
-
-  const id = this.editData.employeeId;
-
-  const payload = {
-    employeeName: this.editData.employeeName,
-    employeeEmail: this.editData.employeeEmail,
-    employeeDob: this.editData.employeeDob,
-    employeeSalary: this.editData.employeeSalary
-  };
-
-  this.employeeservice.editEmployee(id, payload).subscribe({
-    next: () => {
-      console.log("Employee updated successfully");
-      this.isEditOpen = false;
-      this.employeeUpdated.emit();
-    },
-    error: (err) => {
-      console.log("UPDATE ERROR:", err);
-    }
-  });
-}
-  // DELETE
   deleteEmployee(empid: any) {
     this.employeeservice.deleteEmployee(empid).subscribe({
       next: () => {

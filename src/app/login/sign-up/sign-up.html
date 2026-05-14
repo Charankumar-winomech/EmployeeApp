@@ -13,17 +13,25 @@
             placeholder="Employee Name"
             class="inputs"
             [(ngModel)]="name"
+            #nameCtrl="ngModel"
             required
           />
-
+          @if (nameCtrl.touched && nameCtrl.invalid) {
+            <div class="label-error">Name is required</div>
+          }
           <input
             type="email"
             name="email"
             placeholder="Email Address"
             class="inputs"
             [(ngModel)]="email"
+            #emailCtrl="ngModel"
+            required
           />
 
+          @if (emailCtrl.touched && emailCtrl.invalid) {
+            <div class="label-error">Valid email is required</div>
+          }
           <div class="password-wrapper">
             <input
               [type]="showPassword ? 'text' : 'password'"
@@ -31,19 +39,18 @@
               placeholder="Password"
               class="inputs"
               [(ngModel)]="pass"
+              #passCtrl="ngModel"
+              required
             />
-
+            @if (passCtrl.touched && passCtrl.errors?.['required']) {
+              <div class="label-error">Password is required</div>
+            }
             <mat-icon class="eye-icon" (click)="togglePassword()">
-              {{ showPassword ? 'visibility':'visibility_off'  }}
+              {{ showPassword ? 'visibility' : 'visibility_off' }}
             </mat-icon>
           </div>
-          <!-- need to change -->
-          <input
-            type="date"
-            name="dob"
-            class="inputs"
-            [(ngModel)]="dob"
-          />
+
+          <input type="date" name="dob" class="inputs" [(ngModel)]="dob" required/>
 
           <div class="btn-div">
             <button type="submit" class="btn">Sign Up</button>
@@ -52,16 +59,17 @@
       </div>
     </div>
   </div>
-   @if(showError()) {
-  <div
-    class="error"
-    animate.enter="error-enter" animate.leave="error-leave"
-    [class.success-message]="isSuccess()"
-    [class.error-message]="!isSuccess()"
-  >
-    {{ Message() }}
-  </div>
-}
+  @if (showError()) {
+    <div
+      class="error"
+      animate.enter="error-enter"
+      animate.leave="error-leave"
+      [class.success-message]="isSuccess()"
+      [class.error-message]="!isSuccess()"
+    >
+      {{ Message() }}
+    </div>
+  }
   <div class="div2">
     <img src="https://cdn-lite.ip2location.com/img/sign-up.png" alt="signUp image" />
   </div>
